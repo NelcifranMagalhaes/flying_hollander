@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date of day:</strong>
+  <%= @day.date_of_day %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @day.price %>
+</p>
+
+<%= link_to 'Edit', edit_day_path(@day) %> |
+<%= link_to 'Back', days_path %>
