@@ -1,0 +1,82 @@
+
+<div class="ui middle aligned center aligned grid">
+
+<div class="column">
+  <h3>
+    <strong>
+      Login
+    </strong>
+  </h3>
+
+
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name),html: { class: "ui large form"} ) do |f| %>
+
+	<div class="ui segment">
+  		<div class="field">
+
+  			<div class="ui left icon input">
+  				<i class="user icon"></i>
+	    		<%= f.text_field :email, required: false, autofocus: true %>
+	    	</div>
+  		</div>
+
+  		<div class="field">
+
+  			<div class="ui left icon input">
+  			   <i class="lock icon"></i>
+	    		 <%= f.input :password, required: false ,:label => false, class: 'pass_field'%>
+	    	</div>
+  		</div>
+
+  		<div class="field">
+  			
+	     	<%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+
+  		</div>
+
+	</div>
+
+   	<div class="field">
+    	<%= f.button :submit, "Log in" ,class:"ui primary basic button"%>
+  	</div>
+
+    <div class="ui divider"></div>
+
+  <div class="column" align="center">
+
+  <div class="ui buttons">
+      <%= link_to "Sign up", new_registration_path(resource_name) ,:class =>"ui button"%>
+
+  <div class="or"></div>
+      <%= link_to "Esqueceu a senha?",new_password_path(resource_name), :class =>"ui positive button" %>
+
+</div>
+
+</div>
+
+<% end %>
+
+
+
+</div>
+
+
+</div>
+
+<style type="text/css">
+
+    body > .grid {
+      height: 100%;
+    }
+
+    .column {
+      max-width: 450px;
+    }
+    
+
+h2 {
+
+  margin: calc(2rem - 1.143em ) 0em -4rem;
+}
+
+</style>

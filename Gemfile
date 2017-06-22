@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'simple_form'
 gem 'semantic-ui-sass', git: 'https://github.com/doabit/semantic-ui-sass.git'
 gem 'devise'
+gem 'jquery-rails'
 
 
 group :development, :test do
@@ -52,3 +53,4 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'jquery-ui-rails'

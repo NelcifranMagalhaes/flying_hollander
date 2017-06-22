@@ -9,6 +9,140 @@
   </head>
 
   <body>
-    <%= yield %>
-  </body>
+      <!-- Sidebar Menu -->
+<div class="ui vertical inverted sidebar menu">
+  
+
+  <%- if current_user.present?%> <!--verificando se o usuario esta logado-->
+
+	<%= link_to 'Stores',  stores_path ,:class =>"item"  %>
+  	<%= link_to 'Vendors',  vendors_path ,:class =>"item"  %>
+  	<%= link_to 'Goals',  goals_path  ,:class =>"item" %>
+
+  <% end %>
+
+<%- if current_user.blank?%>
+
+    <%= link_to 'Log in',   new_user_session_path   ,:class =>"item" %>
+
+      <% end %>
+
+
+      <%- if current_user.blank?%>
+
+        <%= link_to 'Sign Up',    new_user_registration_path    ,:class =>"item" %>
+
+
+      <% end %>
+
+      <%- if current_user.present?%>
+        
+        <div href="#" class="item">
+          <i class="remove user icon">
+          </i><%= link_to('Log out'.html_safe,  destroy_user_session_path , method: 'delete')%>
+        </div>
+
+        
+      <% end %>
+
+</div>
+
+
+  <div class="ui fixed inverted menu">
+  <div class="ui container">
+
+         <a class="toc item">
+          <i class="sidebar icon"></i>
+        </a>
+
+      <div class="ui simple dropdown item">
+        <%= link_to 'vendors',  vendors_path  %>
+
+      <%- if current_user.present?%> <!--verificando se o usuario esta logado-->
+
+        <i class="dropdown icon"></i>
+          <div class="menu">
+            <%= link_to 'Nova',   new_vendor_path   ,:class =>"item" %>
+          </div>
+
+        <% end %>
+
+      </div>
+
+    <div class="ui simple dropdown item">
+      <%= link_to 'Stores',  stores_path  %>
+ 
+       <%- if current_user.present?%> <!--verificando se o usuario esta logado-->
+
+        <i class="dropdown icon"></i>
+        <div class="menu">
+
+          <%= link_to 'Nova',  new_store_path  ,:class =>"item" %>
+      </div>
+
+      <% end %>
+
+      </div>
+
+
+    <div class="right menu">
+      <%- if current_user.blank?%>
+
+        <div class="item">
+        
+          <%= link_to 'Log in',   new_user_session_path   ,:class =>"ui button" %>
+
+        </div>
+
+      <% end %>
+
+
+      <%- if current_user.blank?%>
+
+      <div class="item">
+        <%= link_to 'Sign Up',    new_user_registration_path    ,:class =>"ui primary button" %>
+
+      </div>
+
+      <% end %>
+
+      <%- if current_user.present?%>
+        
+        <div href="#" class="item">
+          <i class="remove user icon">
+          </i><%= link_to('Log out'.html_safe,  destroy_user_session_path , method: 'delete')%>
+        </div>
+
+        
+      <% end %>
+
+    
+    </div>
+  </div>
+</div>
+
+  <div class="ui main text container">
+&nbsp;
+         <%= yield %>
+
+  </div>
+
+
+
+
+	</body>    
 </html>
+
+
+<script>
+  $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+  </script>
