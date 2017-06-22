@@ -3,7 +3,7 @@ class CreateStores < ActiveRecord::Migration[5.1]
     create_table :stores do |t|
       t.string :name
       t.string :cnpj
-      t.belongs_to :owner, index: true
+      t.belongs_to :user, index: true
 
       t.timestamps
     end
