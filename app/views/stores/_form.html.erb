@@ -1,9 +1,12 @@
-<%= form_with(model: store, local: true) do |form| %>
-  <% if store.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(store.errors.count, "error") %> prohibited this store from being saved:</h2>
+<%= simple_form_for(store, html: { class: "ui form"}) do |f| %>
+  <%= f.error_notification %>
 
-      <ul>
+    <% if store.errors.any? %>
+    <div id="error_explanation" class="ui message">
+     <i class="close icon"></i>
+      <h2><%= pluralize(store.errors.count, "erros") %> prohibited this store from being saved:</h2>
+
+      <ul class="header">
       <% store.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
@@ -11,17 +14,39 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :store_name %>
-  </div>
+    <div class="field">
+        <div class="ui blue label">
+          Name
+        </div>
+
+      <%= f.text_field :name %>
+    </div>
 
   <div class="field">
-    <%= form.label :cnpj %>
-    <%= form.text_field :cnpj, id: :store_cnpj %>
+    <div class="ui blue label">
+        CNPJ
+    </div>
+      <%= f.text_field :cnpj %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+
+  <div class="field">
+      <%= f.submit "Send" , class: "ui primary button" %>
   </div>
+
+<p></p>
+
 <% end %>
+
+
+<script type="text/javascript">
+
+  $('.message .close')
+  .on('click', function() {
+    $(this)
+      .closest('.message')
+      .transition('fade')
+    ;
+  })
+;
+</script>

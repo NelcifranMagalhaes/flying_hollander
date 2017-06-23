@@ -1,7 +1,10 @@
-<%= form_with(model: goal, local: true) do |form| %>
+
+  <%= simple_form_for(goal, html: { class: "ui form"} ) do |f| %>
   <% if goal.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(goal.errors.count, "error") %> prohibited this goal from being saved:</h2>
+    <div id="error_explanation" class="ui message">
+         <i class="close icon"></i>
+
+      <h2><%= pluralize(goal.errors.count, "erros") %> prohibited this goal from being saved:</h2>
 
       <ul>
       <% goal.errors.full_messages.each do |message| %>
@@ -11,27 +14,39 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :start_date %>
-    <%= form.date_select :start_date, id: :goal_start_date %>
+
+  <div class="field ">
+    <div class="ui blue label">
+      Start Date
+    </div>
+    <%= f.text_field :start_date,class: "datepicker" %>
   </div>
 
-  <div class="field">
-    <%= form.label :end_date %>
-    <%= form.date_select :end_date, id: :goal_end_date %>
+
+  <div class="field ">
+    <div class="ui blue label">
+      End Date
+    </div>
+    <%= f.text_field :end_date,class: "datepicker" %>
   </div>
 
-  <div class="field">
-    <%= form.label :month %>
-    <%= form.number_field :month, id: :goal_month %>
+  <div class="field ">
+    <div class="ui blue label">
+      Month
+    </div>
+    <%= f.number_field :month %>
   </div>
 
-  <div class="field">
-    <%= form.label :sum_value %>
-    <%= form.text_field :sum_value, id: :goal_sum_value %>
+  <div class="field ">
+    <div class="ui blue label">
+      Total
+    </div>
+    <%= f.number_field :sum_value %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<div class="field">
+  
+        <%= f.submit "Send" , class: "ui primary button"%>
+</div>
+
 <% end %>

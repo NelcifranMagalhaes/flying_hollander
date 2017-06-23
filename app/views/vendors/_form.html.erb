@@ -1,9 +1,13 @@
-<%= form_with(model: vendor, local: true) do |form| %>
-  <% if vendor.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(vendor.errors.count, "error") %> prohibited this vendor from being saved:</h2>
 
-      <ul>
+<%= simple_form_for(vendor, html: { class: "ui form"}) do |f| %>
+  <%= f.error_notification %>
+
+    <% if vendor.errors.any? %>
+    <div id="error_explanation" class="ui message">
+     <i class="close icon"></i>
+      <h2><%= pluralize(vendor.errors.count, "erros") %> impedem de salvar:</h2>
+
+      <ul class="header">
       <% vendor.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
@@ -11,17 +15,52 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :vendor_name %>
-  </div>
+
+
+    <div class="field">
+        <div class="ui blue label">
+          Name
+      </div>
+
+      <%= f.text_field :name %>
+    </div>
 
   <div class="field">
-    <%= form.label :registration %>
-    <%= form.text_field :registration, id: :vendor_registration %>
+    <div class="ui blue label">
+          Registration
+      </div>
+      <%= f.text_field :registration %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+
+  <div class = "field">
+    <div class="ui blue label">
+      Store 
+    </div>
+    <%=f.association :store, label_method: :name, value_method: :id, :label => false,collection: Store.order(:name), prompt: "Choose a Store",input_html: {class:'ui multiple selection dropdown GG_class'} %>
+
   </div>
+
+
+  <div class="field">
+      <%= f.submit "Send" , class: "ui primary button" %>
+  </div>
+
+<p></p>
+
 <% end %>
+
+
+<script type="text/javascript">
+
+  $('.message .close')
+  .on('click', function() {
+    $(this)
+      .closest('.message')
+      .transition('fade')
+    ;
+  })
+;
+
+
+</script>

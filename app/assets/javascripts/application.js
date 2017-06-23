@@ -25,3 +25,13 @@
 $(document).ready( function() {
 	$('.datepicker').datepicker();	
 });
+
+
+  $('.message .close')
+  .on('click', function() {
+    $(this)
+      .closest('.message')
+      .transition('fade')
+    ;
+  })
+;

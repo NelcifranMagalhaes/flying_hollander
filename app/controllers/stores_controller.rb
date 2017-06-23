@@ -4,7 +4,7 @@ class StoresController < ApplicationController
   # GET /stores
   # GET /stores.json
   def index
-    @stores = Store.all
+    @stores = Store.where(user_id: current_user.id) #somente as lojas de quem esta logado
   end
 
   # GET /stores/1
@@ -25,7 +25,7 @@ class StoresController < ApplicationController
   # POST /stores.json
   def create
     @store = Store.new(store_params)
-    @store.owner_id = current_user.id if current_user.present?
+    @store.user_id = current_user.id if current_user.present?
 
     respond_to do |format|
       if @store.save
@@ -70,6 +70,6 @@ class StoresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def store_params
-      params.require(:store).permit(:name, :cnpj,:owner_id)
+      params.require(:store).permit(:name, :cnpj,:user_id)
     end
 end
