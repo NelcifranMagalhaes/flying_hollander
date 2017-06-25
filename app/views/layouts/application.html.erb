@@ -56,9 +56,9 @@
         </a>
 
       <div class="ui simple dropdown item">
+      <%- if current_user.present?%> <!--verificando se o usuario esta logado-->
         <%= link_to 'vendors',  vendors_path  %>
 
-      <%- if current_user.present?%> <!--verificando se o usuario esta logado-->
 
         <i class="dropdown icon"></i>
           <div class="menu">
@@ -70,9 +70,9 @@
       </div>
 
     <div class="ui simple dropdown item">
+       <%- if current_user.present?%> <!--verificando se o usuario esta logado-->
       <%= link_to 'Stores',  stores_path  %>
  
-       <%- if current_user.present?%> <!--verificando se o usuario esta logado-->
 
         <i class="dropdown icon"></i>
         <div class="menu">
