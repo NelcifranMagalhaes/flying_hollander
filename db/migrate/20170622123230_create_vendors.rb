@@ -4,6 +4,8 @@ class CreateVendors < ActiveRecord::Migration[5.1]
       t.string :name
       t.string :registration
       t.belongs_to :store, index: true
+      t.belongs_to :day, index: true
+
 
       t.timestamps
     end

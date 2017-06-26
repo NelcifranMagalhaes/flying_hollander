@@ -19,15 +19,15 @@
     <div class="ui blue label">
       Start Date
     </div>
-    <%= f.text_field :start_date,class: "datepicker" %>
+    <%= f.text_field :start_date,class: "datepicker" ,id: "start_date"%>
   </div>
 
 
-  <div class="field ">
+  <div class="field" onchange="jack_sparrow_verifica()">
     <div class="ui blue label">
       End Date
     </div>
-    <%= f.text_field :end_date,class: "datepicker" %>
+    <%= f.text_field :end_date,class: "datepicker" ,id:"end_date"%>
   </div>
 
   <div class="field ">
@@ -44,9 +44,37 @@
     <%= f.number_field :sum_value %>
   </div>
 
-<div class="field">
+  <h2 class="ui right floated header">Days</h2>
+
+  <div class="ui divider" id ="days_fields"></div>
+
+
+  <%= f.simple_fields_for :days do |day| %>
+      <%= render 'days_fields', p: day %>
+  <% end %>
+
+  <div class="field">
   
         <%= f.submit "Send" , class: "ui primary button"%>
-</div>
+  </div>
 
-<% end %>
+  <% end %>
+
+<script type="text/javascript">
+  
+  function jack_sparrow_verifica() {
+    var start_date = document.getElementById("start_date").value;
+    var end_date = document.getElementById("end_date").value;
+
+    var date_start_conv = new Date(start_date);
+
+    var date_end_conv  = new Date(end_date);
+    
+    var timeDiff = Math.abs(date_end_conv.getTime() - date_start_conv.getTime());
+    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+
+    var d = document.getElementById("days_field").before(diffDays);
+
+  }
+</script>

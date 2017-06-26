@@ -1,5 +1,7 @@
 <h1>New Goal</h1>
 
 <%= render 'form', goal: @goal %>
+<div class="ui link items">
 
-<%= link_to 'Back', goals_path %>
+<%= link_to 'Back', goals_path, :class =>"ui primary basic button" %>
+</div>

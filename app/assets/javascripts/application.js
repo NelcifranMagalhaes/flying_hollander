@@ -12,12 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-
-//= require turbolinks
 //= require_tree .
 //= require semantic-ui
-
-
 //= require jquery-ui/widgets/datepicker
 
 

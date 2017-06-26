@@ -5,7 +5,6 @@ class CreateGoals < ActiveRecord::Migration[5.1]
       t.date :end_date
       t.integer :month
       t.float :sum_value
-      t.belongs_to :vendor, index: true
 
       t.timestamps
     end

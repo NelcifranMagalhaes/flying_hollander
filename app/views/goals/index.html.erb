@@ -1,8 +1,12 @@
+
+
+<div class="ui main text container">
+
 <p id="notice"><%= notice %></p>
 
-<h1>Goals</h1>
+<h3>Goals</h3>
 
-<table>
+<table  id="mod" class="ui celled table">
   <thead>
     <tr>
       <th>Start date</th>
@@ -13,6 +17,7 @@
     </tr>
   </thead>
 
+
   <tbody>
     <% @goals.each do |goal| %>
       <tr>
@@ -20,9 +25,25 @@
         <td><%= goal.end_date %></td>
         <td><%= goal.month %></td>
         <td><%= goal.sum_value %></td>
-        <td><%= link_to 'Show', goal %></td>
-        <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
-        <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    
+        <td>
+          <%= link_to goal do%>
+            <i class="unhide icon"></i>
+            <% end %>
+        </td>
+
+        <td><%= link_to edit_goal_path(goal) do%>
+          <i class="write square icon"></i>
+          
+          <% end %>
+        </td>
+
+        <td><%= link_to goal, method: :delete, data: { confirm: 'Are you sure?' } do%>
+          <i class="ban icon"></i>
+          
+          <% end %>
+        </td>
+
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +51,11 @@
 
 <br>
 
-<%= link_to 'New Goal', new_goal_path %>
+<div class="ui divider"></div>
+
+<%= link_to new_goal_path, class: 'ui primary basic button' do %>
+  <i class="small add icon"></i> 
+  New Goal
+<% end %>
+
+</div>

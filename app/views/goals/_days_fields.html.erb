@@ -1,0 +1,21 @@
+  
+
+  <div class="field " id="days_field">
+
+    <div class="ui blue label">
+      Date
+    </div>
+      <%= p.text_field :date_of_day ,class: "datepicker" %>
+
+    <div class="ui blue label">
+      Price of day
+    </div>
+      <%= p.text_field :price %>
+
+    <div class="ui blue label">
+      Vendors
+    </div> 
+      <%= p.association :vendors, label_method: :name, value_method: :id, :label => false,collection: Vendor.order(:name), prompt: "Choose a Vendor",input_html: {class:'ui multiple selection dropdown GG_class'} %>
+
+
+  </div>
