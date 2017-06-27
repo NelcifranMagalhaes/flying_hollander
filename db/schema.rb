@@ -12,25 +12,28 @@
 
 ActiveRecord::Schema.define(version: 20170622132456) do
 
-  create_table "days", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "days", force: :cascade do |t|
     t.date "date_of_day"
-    t.float "price", limit: 24
+    t.float "price"
     t.bigint "goal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["goal_id"], name: "index_days_on_goal_id"
   end
 
-  create_table "goals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "goals", force: :cascade do |t|
     t.date "start_date"
     t.date "end_date"
     t.integer "month"
-    t.float "sum_value", limit: 24
+    t.float "sum_value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "stores", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "stores", force: :cascade do |t|
     t.string "name"
     t.string "cnpj"
     t.bigint "user_id"
@@ -39,7 +42,7 @@ ActiveRecord::Schema.define(version: 20170622132456) do
     t.index ["user_id"], name: "index_stores_on_user_id"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -56,7 +59,7 @@ ActiveRecord::Schema.define(version: 20170622132456) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "vendors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "vendors", force: :cascade do |t|
     t.string "name"
     t.string "registration"
     t.bigint "store_id"
