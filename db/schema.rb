@@ -26,10 +26,8 @@ ActiveRecord::Schema.define(version: 20170622132456) do
     t.date "end_date"
     t.integer "month"
     t.float "sum_value", limit: 24
-    t.bigint "vendor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["vendor_id"], name: "index_goals_on_vendor_id"
   end
 
   create_table "stores", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -62,8 +60,10 @@ ActiveRecord::Schema.define(version: 20170622132456) do
     t.string "name"
     t.string "registration"
     t.bigint "store_id"
+    t.bigint "day_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["day_id"], name: "index_vendors_on_day_id"
     t.index ["store_id"], name: "index_vendors_on_store_id"
   end
 

@@ -23,7 +23,7 @@
   </div>
 
 
-  <div class="field" onchange="jack_sparrow_verifica()">
+  <div class="field" onchange="duplicate()">
     <div class="ui blue label">
       End Date
     </div>
@@ -48,10 +48,13 @@
 
   <div class="ui divider" id ="days_fields"></div>
 
-
-  <%= f.simple_fields_for :days do |day| %>
+  <div id="duplicater0">
+  
+    <%= f.simple_fields_for :days do |day| %>
       <%= render 'days_fields', p: day %>
-  <% end %>
+    <% end %>
+
+</div>
 
   <div class="field">
   
@@ -61,9 +64,10 @@
   <% end %>
 
 <script type="text/javascript">
-  
-  function jack_sparrow_verifica() {
-    var start_date = document.getElementById("start_date").value;
+
+  var i =0;
+  function duplicate() {
+        var start_date = document.getElementById("start_date").value;
     var end_date = document.getElementById("end_date").value;
 
     var date_start_conv = new Date(start_date);
@@ -71,10 +75,16 @@
     var date_end_conv  = new Date(end_date);
     
     var timeDiff = Math.abs(date_end_conv.getTime() - date_start_conv.getTime());
-    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24))+1;
 
 
-    var d = document.getElementById("days_field").before(diffDays);
+    var original = document.getElementById('duplicater' + i);
+    var clone = original.cloneNode(true); // "deep" clone
+    clone.id = "duplicater" + ++i; // there can only be one element with an ID
+
+    for (var j = 0;j <=diffDays; j++) {
+      original.parentNode.appendChild(clone);
+    }
 
   }
 </script>
