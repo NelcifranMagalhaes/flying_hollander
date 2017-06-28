@@ -26,6 +26,32 @@ class GoalsController < ApplicationController
   def create
     @goal = Goal.new(goal_params)
 
+    if @goal.valid?
+
+      list_vendors = params[:goal][:vendor_ids]
+      list_vendors.shift
+
+      @value_for_each_vendor = Integer(params[:goal][:sum_value]) / (list_vendors.size)
+
+
+
+      list_vendors.each do |x|
+
+
+        @guy = Vendor.find_by(id: Integer(x))
+
+      puts "aqui #{@guy.name}"
+
+        if @guy.present?
+          
+          @guy.update(gold_farm: (@guy.gold_farm) + (@value_for_each_vendor))
+
+        end
+        
+      end
+
+    end
+
     respond_to do |format|
       if @goal.save
         format.html { redirect_to @goal, notice: 'Goal was successfully created.' }

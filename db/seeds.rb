@@ -37,7 +37,9 @@ end
 
 	registration: Faker::Number.number(7),
 
-	store_id: Faker::Number.between(1, 19)
+	store_id: Faker::Number.between(1, 19),
+
+	gold_farm: Faker::Number.between(0, 125)
 
     )
 

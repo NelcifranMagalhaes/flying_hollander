@@ -4,8 +4,8 @@ class Goal < ApplicationRecord
 
 	validates :start_date ,presence: true
 	validates :end_date ,presence: true
-	validates :month ,presence: true
-	validates :sum_value ,presence: true
+	validates :month ,presence: true, numericality: {less_than_or_equal_to: 12,only_integer: true}
+	validates :sum_value ,presence: true,numericality: true
 	validates :vendor_ids,presence: true
 
 end

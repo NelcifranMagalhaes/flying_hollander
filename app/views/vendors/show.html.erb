@@ -1,14 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @vendor.name %>
-</p>
 
-<p>
-  <strong>Registration:</strong>
-  <%= @vendor.registration %>
-</p>
 
-<%= link_to 'Edit', edit_vendor_path(@vendor) %> |
-<%= link_to 'Back', vendors_path %>
+<div class="ui card">
+
+<div class="grey card ui link card">
+  <div class="content">
+
+  <div class="header"><%= @vendor.name %></div>
+  <div class="ui divider"></div>
+
+    <div class="description">
+      <div class="meta"><span class="category">Registration:</span> </div>
+
+      	<%= @vendor.registration %>
+
+      <div class="meta"><span class="category">Value :</span> </div>
+
+      	<%= @vendor.gold_farm %>
+
+  	</div>
+  </div>
+</div>
+</div>
+
+
+<div class="ui divider"></div>
+<div class="ui buttons">
+
+<%= link_to 'Edit', edit_vendor_path(@vendor) ,:class =>"ui button"%> 
+<div class="or"></div>
+
+<%= link_to 'Back', vendors_path ,:class =>"ui positive button"%>
+
+</div>

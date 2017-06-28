@@ -1,6 +1,12 @@
 <h1>Editing Goal</h1>
 
 <%= render 'form', goal: @goal %>
+<p></p>
+<div class="ui buttons">
 
-<%= link_to 'Show', @goal %> |
-<%= link_to 'Back', goals_path %>
+<%= link_to 'Show', @goal ,:class =>"ui button"%> 
+<div class="or"></div>
+
+<%= link_to 'Back', goals_path ,:class =>"ui positive button"%>
+
+</div>

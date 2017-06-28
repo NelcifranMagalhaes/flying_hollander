@@ -1,14 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @store.name %>
-</p>
 
-<p>
-  <strong>Cnpj:</strong>
-  <%= @store.cnpj %>
-</p>
+<div class="ui card">
 
-<%= link_to 'Edit', edit_store_path(@store) %> |
-<%= link_to 'Back', stores_path %>
+<div class="grey card ui link card">
+  <div class="content">
+
+  <div class="header"><%= @store.name %></div>
+  <div class="ui divider"></div>
+
+    <div class="description">
+      <div class="meta"><span class="category">CNPJ:</span> </div>
+
+        <%= @store.cnpj %>
+
+  </div>
+  </div>
+</div>
+</div>
+
+
+<div class="ui divider"></div>
+<div class="ui buttons">
+
+<%= link_to 'Edit', edit_store_path(@store) ,:class =>"ui button"%> 
+<div class="or"></div>
+
+<%= link_to 'Back', stores_path ,:class =>"ui positive button"%>
+
+</div>

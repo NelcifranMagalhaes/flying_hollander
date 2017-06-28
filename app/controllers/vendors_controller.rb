@@ -25,6 +25,8 @@ class VendorsController < ApplicationController
   # POST /vendors.json
   def create
     @vendor = Vendor.new(vendor_params)
+    
+    @vendor.gold_farm = 0 #begin farm for each vendor with 0
 
     respond_to do |format|
       if @vendor.save
@@ -69,6 +71,6 @@ class VendorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vendor_params
-      params.require(:vendor).permit(:name, :registration ,:store_id)
+      params.require(:vendor).permit(:name, :registration ,:store_id,:gold_farm)
     end
 end
