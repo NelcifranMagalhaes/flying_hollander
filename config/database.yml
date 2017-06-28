@@ -35,7 +35,7 @@ default: &default
   pool: 5
   host: 127.0.0.1
   port: 5432
-  username: root
+  username: postgres
   password: root
 
 development:
@@ -52,5 +52,5 @@ production:
   pool: 5
   host: 127.0.0.1
   database: flying_holander_production
-  username: root
+  username: postgres
   password: root
