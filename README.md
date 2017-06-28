@@ -9,8 +9,18 @@
  * Database
  - PostgresSQL
 
-*APP in production
+* Commands to run the APP
+-  rake db:setup
+This project have seeds,
+with User
+- email :deidara@gmail.com
+- passwd :123456 
+
+* APP in production
 - https://flying-hollander.herokuapp.com/
+
+* Github PAge
+- https://nelcifranmagalhaes.github.io/flying_hollander/
 
 This project aims to control a store and vendors to one owner!
 
