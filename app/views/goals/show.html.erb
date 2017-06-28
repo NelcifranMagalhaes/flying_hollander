@@ -20,5 +20,14 @@
   <%= @goal.sum_value %>
 </p>
 
+
+<div>
+  <strong>Sum value:</strong>
+  <% @goal.vendors.each do |v| %>
+  <p> <%= v.name  %></p>
+
+  <% end %>
+</div>
+
 <%= link_to 'Edit', edit_goal_path(@goal) %> |
 <%= link_to 'Back', goals_path %>

@@ -23,7 +23,7 @@
   </div>
 
 
-  <div class="field" onchange="duplicate()">
+  <div class="field">
     <div class="ui blue label">
       End Date
     </div>
@@ -44,17 +44,18 @@
     <%= f.number_field :sum_value %>
   </div>
 
-  <h2 class="ui right floated header">Days</h2>
 
-  <div class="ui divider" id ="days_fields"></div>
+  <div class = "field">
+    <div class="ui blue label">
+      Vendors 
+    </div>
+    <%=f.association :vendors, label_method: :name, value_method: :id, :label => false,collection: Vendor.order(:name), prompt: "Choose Vendors",input_html: {class:'ui multiple selection dropdown GG_class'} %>
 
-  <div id="duplicater0">
-  
-    <%= f.simple_fields_for :days do |day| %>
-      <%= render 'days_fields', p: day %>
-    <% end %>
+  </div>
 
-</div>
+
+
+  <div class="ui divider"></div>
 
   <div class="field">
   
@@ -62,29 +63,3 @@
   </div>
 
   <% end %>
-
-<script type="text/javascript">
-
-  var i =0;
-  function duplicate() {
-        var start_date = document.getElementById("start_date").value;
-    var end_date = document.getElementById("end_date").value;
-
-    var date_start_conv = new Date(start_date);
-
-    var date_end_conv  = new Date(end_date);
-    
-    var timeDiff = Math.abs(date_end_conv.getTime() - date_start_conv.getTime());
-    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24))+1;
-
-
-    var original = document.getElementById('duplicater' + i);
-    var clone = original.cloneNode(true); // "deep" clone
-    clone.id = "duplicater" + ++i; // there can only be one element with an ID
-
-    for (var j = 0;j <=diffDays; j++) {
-      original.parentNode.appendChild(clone);
-    }
-
-  }
-</script>

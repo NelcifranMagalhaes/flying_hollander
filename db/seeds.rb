@@ -7,8 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Store.destroy_all
 Vendor.destroy_all
+User.destroy_all
+
 puts "Deleted all"
 
+ User.create!(
+ 		id: 1,
+      email:                  "deidara@gmail.com",
+      password:               "123456",
+      password_confirmation:  "123456"
+  )
 
 20.times do |index|
 	Store.create!(
@@ -34,4 +42,8 @@ end
     )
 
 end
+
+
+
+puts "Created all"
 

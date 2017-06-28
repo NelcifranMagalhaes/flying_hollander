@@ -62,7 +62,7 @@
 
         <i class="dropdown icon"></i>
           <div class="menu">
-            <%= link_to 'Nova',   new_vendor_path   ,:class =>"item" %>
+            <%= link_to 'New',   new_vendor_path   ,:class =>"item" %>
           </div>
 
         <% end %>
@@ -77,7 +77,23 @@
         <i class="dropdown icon"></i>
         <div class="menu">
 
-          <%= link_to 'Nova',  new_store_path  ,:class =>"item" %>
+          <%= link_to 'New',  new_store_path  ,:class =>"item" %>
+      </div>
+
+      <% end %>
+
+      </div>
+
+
+    <div class="ui simple dropdown item">
+       <%- if current_user.present?%> <!--verificando se o usuario esta logado-->
+      <%= link_to 'Goals',  goals_path  %>
+ 
+
+        <i class="dropdown icon"></i>
+        <div class="menu">
+
+          <%= link_to 'New',  new_goal_path  ,:class =>"item" %>
       </div>
 
       <% end %>

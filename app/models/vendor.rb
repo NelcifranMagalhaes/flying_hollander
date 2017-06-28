@@ -1,8 +1,9 @@
 class Vendor < ApplicationRecord
 
 	belongs_to :store
-	belongs_to :day, optional: true
-	
+	has_and_belongs_to_many :goals,:join_table => :vendors_goals
+
+
 	validates :name ,presence: true
 	validates :registration ,presence: true
 

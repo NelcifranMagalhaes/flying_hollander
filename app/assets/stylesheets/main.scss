@@ -9,9 +9,6 @@ a:hover {
     display: inline-block;
 }
 
-  body {
-    background-color: #AFFAFA;
-  }
   .ui.menu .item img.logo {
     margin-right: 1.5em;
   }
@@ -30,16 +27,13 @@ a:hover {
     min-height: 700px;
 }
 
-.jutsu_footer{
-  
-    padding-left: 25rem!important;
-
-
-}
-
-body.pushable > .pusher { /*"A cor do Background"*/
+/*
+body.pushable > .pusher {
     background: #dcd9d8;
 }
+
+*/
+
 .ui.form input[type="password"]{
   padding: 0.579em 13em;
 }

@@ -15,7 +15,6 @@ class GoalsController < ApplicationController
   # GET /goals/new
   def new
     @goal = Goal.new
-    @goal.days.build
   end
 
   # GET /goals/1/edit
@@ -70,6 +69,6 @@ class GoalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def goal_params
-      params.require(:goal).permit(:start_date, :end_date, :month, :sum_value,:days_attributes => [:date_of_day,:price,:vendor_id])
+      params.require(:goal).permit(:start_date, :end_date, :month, :sum_value,:vendor_ids=>[])
     end
 end
