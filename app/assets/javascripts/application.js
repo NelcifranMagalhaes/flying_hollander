@@ -12,9 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
-//= require semantic-ui
 //= require jquery-ui/widgets/datepicker
+//= require semantic-ui
+//= require_tree .
 
 
 
